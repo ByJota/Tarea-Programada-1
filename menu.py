@@ -31,24 +31,21 @@ def menu():
             if opcion==1:
                 agregarAnimal()
                 system("cls")
-                menu()
             elif opcion==2:
                 crearExpediente(miZoo)
                 system("cls")
-
             elif opcion==3:
                 registrarAnotaciones(matriz)
                 system("cls")
-
             elif opcion==4:
                 system("cls")
-
+                #apartar animales
             elif opcion==5:
                 system("cls")
-
+                #exportar la base de datos
             elif opcion==6:
                 system("cls")
-
+                #mostrar base de datos
             elif opcion==7:
                 print("¿Seguro que quiere salir del Programa?\n"+
                     "1.Si\n"+

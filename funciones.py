@@ -10,10 +10,13 @@ import re
 from os import system
 import xml.etree.ElementTree as ET
 from archivos import *
+from unidecode import unidecode
 
 wikipedia.set_lang("es")
+
 nombre='zoologico'
 informacion='infoZoo'
+
 def validarNumero(numero):
     if numero<=0:
         print("No se pueden ingresar valores menores a cero")
@@ -81,7 +84,6 @@ def agregarAnimal():
             time.sleep(4.5)
             system("cls")
             
-
 def limpiarTexto(resumen):
     resumen = re.sub(r'\[.*?\]+', '', resumen)
     resumen = resumen.replace('\u200b', '')
@@ -112,18 +114,37 @@ def crearExpediente(miZoo):
             system("cls")
             agregarAnimal()
 
-def registrarAnotaciones (matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
+def validarBusqueda(matriz):
+    while True:
+        print('Los animales en el zoologico:',lee(nombre))
+        buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
+        if buscarAnimal.isdigit()== True:
+            print('Ingrese el nombre del animal, no se permiten valores numericos.\n')
+        else:
+            buscarAnimal=unidecode(buscarAnimal).lower()
+            for fila in matriz:
+                for animal in fila:
+                    if animal == buscarAnimal:
+                        return buscarAnimal
+            print('El animal a buscar no existe dentro del zoologico.\n')
+            
+def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
     respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
-    print('Los animales en el zoologico:',lee(nombre))
+    print('')
     while respuesta == 1:
-        buscarAnimal=input('Indique el nombre del animal al cual quiere añadir una anotación: ')#validar nombre de animal en minusculas y sin caracteres especiales
+        buscarAnimal=validarBusqueda(matriz)
         for i in range(len(matriz)): #busca al animal en la matriz
             expediente= matriz[i]
             animal=expediente[0]
             if buscarAnimal == animal:
                 anotacion=input('Anotacion: ')
                 expediente[5].append(anotacion)
+                graba(informacion,matriz)
+                print('Anotacion guardada!\n')
+        
         respuesta=int(input("Quiere realizar una anotacion?: Digite [1] para Si Digite [2] para no Respuesta:")) 
+        system("cls")
     print(matriz)
-    time.sleep(5.5)      
+    time.sleep(20)      
     return matriz
+
