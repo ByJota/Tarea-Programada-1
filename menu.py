@@ -1,4 +1,5 @@
 from os import system
+from funciones import *
 
 def menu():
     '''
@@ -49,3 +50,8 @@ def menu():
     else:
         print("opcion invalida. ")
     return
+
+#Programa Principal 
+
+print("Programa Zoologico".center(100,"="))
+agregarAnimal()
