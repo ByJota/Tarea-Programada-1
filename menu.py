@@ -33,7 +33,7 @@ def menu():
                 menu()
             elif opcion==2:
                 crearExpediente(miZoo)
-                #system("cls")
+                system("cls")
 
             elif opcion==3:
                 system("cls")

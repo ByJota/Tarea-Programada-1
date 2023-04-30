@@ -10,6 +10,7 @@ import re
 from os import system
 import xml.etree.ElementTree as ET
 from archivos import *
+
 wikipedia.set_lang("es")
 nombre='zoologico'   
 def validarNumero(numero):
@@ -40,12 +41,12 @@ def agregarAnimal():
                     i+=1
                 else:
                     animal= random.choice(linea)
-            print(f"Animales seleccionados:",miZoo)
+            print(f"Animales seleccionados:")
             for animal in miZoo:
                 print(animal)
             graba(nombre,miZoo)
             time.sleep(4.5)
-            return crearExpediente(miZoo)
+            return miZoo
         except ValueError:
             system("cls")
             print("Debe ingresar unicamente un numero entero")
@@ -89,16 +90,23 @@ def limpiarTexto(resumen):
 def crearExpediente(miZoo):
     matriz=[]
     expediente=[]
-    for i in range(len(miZoo)):
-        expediente=[]
-        animal=miZoo[i]
-        titulo= wikipedia.page(animal).title
-        url= wikipedia.page(animal).url
-        resumen= limpiarTexto(wikipedia.summary(animal,sentences=2))
-        imagen= wikipedia.page(animal).images[1]
-        anotaciones=[]
-        expediente.extend([animal,titulo,url,resumen,imagen,anotaciones])
-        matriz.append(expediente)
-    print(matriz)
-    time.sleep(4.5)
-    return matriz
+    while True:
+        try:
+            for i in range(len(miZoo)):
+                expediente=[]
+                animal=miZoo[i]
+                titulo= wikipedia.page(animal).title
+                url= wikipedia.page(animal).url
+                resumen= limpiarTexto(wikipedia.summary(animal,sentences=2))
+                imagen= wikipedia.page(animal).images[1]
+                anotaciones=[]
+                expediente.extend([animal,titulo,url,resumen,imagen,anotaciones])
+                matriz.append(expediente)
+            print(matriz)
+            time.sleep(7.5)
+            return matriz
+        except TypeError:
+            print('No se a creado un Zoologico aun\nSe le redirigira a la opcion para crear un zoologico')
+            time.sleep(5.5)
+            system("cls")
+            agregarAnimal()

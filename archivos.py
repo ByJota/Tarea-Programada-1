@@ -27,7 +27,9 @@ def lee (nomArchLeer):
         lista = pickle.load(f)
         #print("2. Voy a cerrar el archivo: ", nomArchLeer)
         f.close()
-    except:
-        print("Error al leer el archivo: ", nomArchLeer)
+    except TypeError:
+        print('No se pudo leer adecuadamente')
+    except FileNotFoundError:
+        print("El archivo:", nomArchLeer,' aun no contiene nada, Utilice la opcion 1 para crear un zoologico primero')
         return False
     return lista
