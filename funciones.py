@@ -1,17 +1,22 @@
+#Elaborado por Josue Salazar ,Jenny King 
+#Fecha de creacion 29/04/23 1:20pm
+#Ultima modificacion 29/04/23 1:20pm
+#version 3.10.6
+#importacion de librerias
 import wikipedia
 import time
 import random
 import re
 from os import system
 import xml.etree.ElementTree as ET
+from archivos import *
 wikipedia.set_lang("es")
-
+nombre='zoologico'   
 def validarNumero(numero):
     if numero<=0:
         print("No se pueden ingresar valores menores a cero")
         numero=int(input('Digite el numero de animales aleatorios que quiere ingresar al zoo: '))
-        validarNumero(numero)
-    
+        validarNumero(numero)  
     return numero
 
 def agregarAnimal():
@@ -35,9 +40,10 @@ def agregarAnimal():
                     i+=1
                 else:
                     animal= random.choice(linea)
-            print(f"Animales seleccionados:")
+            print(f"Animales seleccionados:",miZoo)
             for animal in miZoo:
                 print(animal)
+            graba(nombre,miZoo)
             time.sleep(4.5)
             return crearExpediente(miZoo)
         except ValueError:
@@ -93,6 +99,6 @@ def crearExpediente(miZoo):
         anotaciones=[]
         expediente.extend([animal,titulo,url,resumen,imagen,anotaciones])
         matriz.append(expediente)
+    print(matriz)
+    time.sleep(4.5)
     return matriz
-
-
