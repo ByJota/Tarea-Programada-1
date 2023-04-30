@@ -15,6 +15,7 @@ def menu():
     - re direcciona a la funcion indicada por el usuario
     '''
     miZoo=lee(nombre)
+    matriz=leeInfo(informacion)
     while True:
         try:
             print("Programa Zoologico".center(100,"="))
@@ -36,6 +37,7 @@ def menu():
                 system("cls")
 
             elif opcion==3:
+                registrarAnotaciones(matriz)
                 system("cls")
 
             elif opcion==4:

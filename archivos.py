@@ -33,3 +33,19 @@ def lee (nomArchLeer):
         print("El archivo:", nomArchLeer,' aun no contiene nada, Utilice la opcion 1 para crear un zoologico primero')
         return False
     return lista
+
+def leeInfo (nomArchLeer):
+    #Función que lee un archivo en una lista 
+    lista=[]
+    try:
+        f=open(nomArchLeer,"rb")
+        #print("2. Voy a leer el archivo: ", nomArchLeer)
+        lista = pickle.load(f)
+        #print("2. Voy a cerrar el archivo: ", nomArchLeer)
+        f.close()
+    except TypeError:
+        print('No se pudo leer adecuadamente')
+    except FileNotFoundError:
+        print("El archivo:", nomArchLeer,' aun no contiene nada, Utilice la opcion 2 para crear un Expediente con todos los animales del zoologico.')
+        return False
+    return lista

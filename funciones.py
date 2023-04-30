@@ -12,7 +12,8 @@ import xml.etree.ElementTree as ET
 from archivos import *
 
 wikipedia.set_lang("es")
-nombre='zoologico'   
+nombre='zoologico'
+informacion='infoZoo'
 def validarNumero(numero):
     if numero<=0:
         print("No se pueden ingresar valores menores a cero")
@@ -72,15 +73,14 @@ def agregarAnimal():
             print("Error con los permisos del archivo ")
             print("Reanudando proceso")
             time.sleep(4.5)
-            system("cls")
-            '''
+            system("cls") 
         except OSError:
             system("cls")
             print("Error de sistema")
             print("Reanudando proceso")
             time.sleep(4.5)
             system("cls")
-            '''
+            
 
 def limpiarTexto(resumen):
     resumen = re.sub(r'\[.*?\]+', '', resumen)
@@ -103,6 +103,7 @@ def crearExpediente(miZoo):
                 expediente.extend([animal,titulo,url,resumen,imagen,anotaciones])
                 matriz.append(expediente)
             print(matriz)
+            graba(informacion,matriz)
             time.sleep(7.5)
             return matriz
         except TypeError:
@@ -110,3 +111,19 @@ def crearExpediente(miZoo):
             time.sleep(5.5)
             system("cls")
             agregarAnimal()
+
+def registrarAnotaciones (matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
+    respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
+    print('Los animales en el zoologico:',lee(nombre))
+    while respuesta == 1:
+        buscarAnimal=input('Indique el nombre del animal al cual quiere añadir una anotación: ')#validar nombre de animal en minusculas y sin caracteres especiales
+        for i in range(len(matriz)): #busca al animal en la matriz
+            expediente= matriz[i]
+            animal=expediente[0]
+            if buscarAnimal == animal:
+                anotacion=input('Anotacion: ')
+                expediente[5].append(anotacion)
+        respuesta=int(input("Quiere realizar una anotacion?: Digite [1] para Si Digite [2] para no Respuesta:")) 
+    print(matriz)
+    time.sleep(5.5)      
+    return matriz
