@@ -18,6 +18,13 @@ nombre='zoologico'
 informacion='infoZoo'
 
 def validarNumero(numero):
+    '''
+    Funcion:validar que el numero ingresado sea un entero positivo
+    Entradas:
+    - numeros(int)
+    Salidas:
+    -numero(int)
+    '''
     if numero<=0:
         print("No se pueden ingresar valores menores a cero")
         numero=int(input('Digite el numero de animales aleatorios que quiere ingresar al zoo: '))
@@ -25,6 +32,14 @@ def validarNumero(numero):
     return numero
 
 def agregarAnimal():
+    '''
+    Funcion: Genera una lista de animales aleatorios para el zoologico
+    Entradas:
+    - path: direccion del archivo txt con los animales
+    - numero(int): cantidad de animales aleatorios que va a agregar
+    Salidas:
+    - miZoo(list): lista con los animales del zoologico
+    '''
     while True:
         try:
             print(f"Ingrese la direccion del archivo")
@@ -85,11 +100,25 @@ def agregarAnimal():
             system("cls")
             
 def limpiarTexto(resumen):
+    '''
+    Funcion: Limpia numeros de pie y otros caracteres del texto extraido
+    Entradas:
+    - resumen(str): resumen del animal sacado de wikipedia
+    Salidas:
+    - resumen(str): sin numeros de pie o caracteres especiales
+    '''
     resumen = re.sub(r'\[.*?\]+', '', resumen)
     resumen = resumen.replace('\u200b', '')
     return resumen
 
 def crearExpediente(miZoo):
+    '''
+    Funcion: Crea un expediente para cada animal y lo añade a una matriz
+    Entradas:
+    -miZoo(list)
+    Salidas:
+    - matriz(matrix): contiene los expedientes de todos los animales del zoologico
+    '''
     matriz=[]
     expediente=[]
     while True:
@@ -115,6 +144,13 @@ def crearExpediente(miZoo):
             agregarAnimal()
 
 def validarBusqueda(matriz):
+    '''
+    Funcion: Validar que el animal a buscar exista en el zoologico
+    Entradas:
+    - matriz(matrix)
+    Salidas:
+    - buscarAnimal(str): devuelve despues de normalizar el str, quitar tildes y caracteres especiales
+    '''
     while True:
         print('Los animales en el zoologico:',lee(nombre))
         buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
@@ -129,6 +165,13 @@ def validarBusqueda(matriz):
             print('El animal a buscar no existe dentro del zoologico.\n')
             
 def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
+    '''
+    Funcion: Registrar anotaciones para cada animal en el zoologico
+    Entradas:
+    - matriz(matrix)
+    Salidas:
+    - matriz(matrix)
+    '''
     respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
     print('')
     while respuesta == 1:
@@ -149,6 +192,13 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     return matriz
 
 def validarApartado(miZoo):
+    '''
+    Funcion: valida que el numero de animales por apartar no sobrepase los animales existentes
+    Entradas:
+    - miZoo(lista)
+    Salidas:
+    - apartar(int): numero de animales por apartar validado
+    '''
     while True:
         try:
             apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
@@ -159,6 +209,14 @@ def validarApartado(miZoo):
             print('Debe indicar un valor numerico de animales para apartar.\n')
 
 def apartarAnimales(miZoo,matriz):
+    '''
+    Funcion: aparta animales del zoologico
+    Entradas:
+    - miZoo(list)
+    - matriz(matrix)
+    Salidas:
+    - matriz(matrix)
+    '''
     apartar=validarApartado(miZoo)
     i=0
     confirmacion=int(input(f'¿Está seguro que quiere apartar {apartar} animales de su Zoologico?\n'+
@@ -180,6 +238,13 @@ def apartarAnimales(miZoo,matriz):
     return''
 
 def exportarDB(matriz): #crear XML
+    '''
+    Funcion: Crea una base de datos formato xml con los datos de la matriz
+    Entradas:
+    - matriz(matrix)
+    Salidas:
+    - tree(archivo xml)
+    '''
     # crear etiqueta root
     root=ET.Element('root')
     #crear sub elemento
@@ -194,4 +259,4 @@ def exportarDB(matriz): #crear XML
     print(nombre , 'Se creo y guardo con exito!')
     time.sleep(3)
     system("cls")
-    return''
+    return tree
