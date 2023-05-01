@@ -148,3 +148,29 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     time.sleep(20)      
     return matriz
 
+def validarApartado(miZoo):
+    apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
+    while True:
+        if apartar > len(miZoo):
+            print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
+        return apartar
+
+def apartarAnimales(miZoo,matriz):
+    apartar=validarApartado(miZoo)
+    i=0
+    confirmacion=int(input(f'¿Está seguro que quiere apartar {apartar} animales de su Zoologico?\n'+
+                           'Digite [1] para SI\nDigite [2] para NO\nRespuesta:'))
+    if confirmacion == 1:
+        while i < apartar:
+            apartado= random.randint(1,len(matriz))
+            #print(apartado,len(matriz))
+            matriz.remove(matriz[apartado-1])
+            graba(informacion,matriz)
+            print('El animal:',matriz[apartado-1][0],'se ha apartado exitosamente.')
+            print(matriz)
+            i+=1
+        time.sleep(20)
+        return matriz
+    print('Apartado abortado. No se aparto ningun animal. Volviendo al menu')
+    time.sleep(3)
+    return''

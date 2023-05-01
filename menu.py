@@ -14,10 +14,12 @@ def menu():
     salidas:
     - re direcciona a la funcion indicada por el usuario
     '''
-    miZoo=lee(nombre)
-    matriz=leeInfo(informacion)
+    # miZoo=lee(nombre)
+    # matriz=leeInfo(informacion)
     while True:
         try:
+            miZoo=lee(nombre)
+            matriz=leeInfo(informacion)
             print("Programa Zoologico".center(100,"="))
             print("Menu de opciones:\n"+
                     "-1.Agregar animal\n"+
@@ -39,7 +41,7 @@ def menu():
                 system("cls")
             elif opcion==4:
                 system("cls")
-                #apartar animales
+                apartarAnimales(miZoo,matriz)
             elif opcion==5:
                 system("cls")
                 #exportar la base de datos
