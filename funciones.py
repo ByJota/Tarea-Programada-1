@@ -149,11 +149,14 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     return matriz
 
 def validarApartado(miZoo):
-    apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
     while True:
-        if apartar > len(miZoo):
-            print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
-        return apartar
+        try:
+            apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
+            if apartar > len(miZoo):
+                print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
+            return apartar
+        except:
+            print('Debe indicar un valor numerico de animales para apartar.\n')
 
 def apartarAnimales(miZoo,matriz):
     apartar=validarApartado(miZoo)
@@ -173,4 +176,22 @@ def apartarAnimales(miZoo,matriz):
         return matriz
     print('Apartado abortado. No se aparto ningun animal. Volviendo al menu')
     time.sleep(3)
+    system("cls")
+    return''
+
+def exportarDB(matriz): #crear XML
+    # crear etiqueta root
+    root=ET.Element('root')
+    #crear sub elemento
+    root=ET.SubElement(root,'root')
+    #insertar lista en subelemento
+    for i in range(len(matriz)):
+        expediente= ET.SubElement(root,'expediente')
+        expediente.text =str(matriz[i])
+    tree = ET.ElementTree(root)
+    nombre= input('Determine un nombre para guardar el archivo:')+'.xml'
+    graba(nombre,tree)
+    print(nombre , 'Se creo y guardo con exito!')
+    time.sleep(3)
+    system("cls")
     return''

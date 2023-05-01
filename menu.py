@@ -14,8 +14,6 @@ def menu():
     salidas:
     - re direcciona a la funcion indicada por el usuario
     '''
-    # miZoo=lee(nombre)
-    # matriz=leeInfo(informacion)
     while True:
         try:
             miZoo=lee(nombre)
@@ -44,7 +42,7 @@ def menu():
                 apartarAnimales(miZoo,matriz)
             elif opcion==5:
                 system("cls")
-                #exportar la base de datos
+                exportarDB(matriz)
             elif opcion==6:
                 system("cls")
                 #mostrar base de datos
