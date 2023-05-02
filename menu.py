@@ -45,6 +45,7 @@ def menu():
                 exportarDB(matriz)
             elif opcion==6:
                 system("cls")
+                crearTablaHTML(matriz)
                 #mostrar base de datos
             elif opcion==7:
                 print("¿Seguro que quiere salir del Programa?\n"+

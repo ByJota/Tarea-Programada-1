@@ -11,8 +11,15 @@ from os import system
 import xml.etree.ElementTree as ET
 from archivos import *
 from unidecode import unidecode
+import pandas as pd
+import datetime
 
 wikipedia.set_lang("es")
+
+"""
+miZoo=Lista de animales
+matriz= Matriz con los expedientes de los animales
+"""
 
 nombre='zoologico'
 informacion='infoZoo'
@@ -225,9 +232,10 @@ def apartarAnimales(miZoo,matriz):
         while i < apartar:
             apartado= random.randint(1,len(matriz))
             #print(apartado,len(matriz))
+            nombreAnimal=matriz[apartado-1][0]
             matriz.remove(matriz[apartado-1])
             graba(informacion,matriz)
-            print('El animal:',matriz[apartado-1][0],'se ha apartado exitosamente.')
+            print('El animal:',nombreAnimal,'se ha apartado exitosamente.')
             print(matriz)
             i+=1
         time.sleep(20)
@@ -260,3 +268,34 @@ def exportarDB(matriz): #crear XML
     time.sleep(3)
     system("cls")
     return tree
+
+def crearTablaHTML(matriz):
+
+    nombre=[]
+    nombreCientifico=[]
+    linkReferencia=[]
+    descripcion=[]
+    linkImagen=[]
+    anotaciones=[]
+    indices=[]
+
+    for indice,animal in enumerate(matriz):
+        nombre.append(animal[0])
+        nombreCientifico.append(animal[1])
+        linkReferencia.append(animal[2])
+        descripcion.append(animal[3])
+        linkImagen.append(animal[4])
+        anotaciones.append(animal[5])
+        indices.append(indice+1)
+
+    dicTabla={'Nombre': nombre, 'Nombre Cientifico': nombreCientifico, 'link Referencia':linkReferencia, 
+            'descripcion': descripcion, 'link Imagenes':linkImagen, 'anotaciones':anotaciones }
+    tabla=pd.DataFrame(data=dicTabla, index= indices)
+    tabla=str(tabla.to_html(justify="center",render_links=True))
+    fecha=datetime.datetime.now()
+    formato=fecha.strftime('%d-%m-%Y-%H-%M-%S')+".html"
+    grabaNoBinario(formato,tabla)
+    
+
+
+

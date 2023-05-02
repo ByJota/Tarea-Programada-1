@@ -1,4 +1,5 @@
 import pandas as pd
+import datetime
 tabla=[['serpiente', 'Serpentes', 'https://es.wikipedia.org/wiki/Serpentes', 'Las serpientes (Serpentes) u ofidios (Ophidia) son un suborden de saurópsidos (reptiles) diápsidos pertenecientes al orden Squamata, del superorden Lepidosauria, caracterizado por la ausencia de patas (la pitón mantiene diminutas extremidades vestigiales, herencia de su pasado evolutivo) y el cuerpo muy alargado. Se originaron en el período Cretácico.', 'https://upload.wikimedia.org/wikipedia/commons/9/90/Bothriechis_schlegelii_%28La_Selva_Biological_Station%29.jpg', ['el pibe esta bien ','se encuentra chido']],
     ['perro ', 'Canis familiaris', 'https://es.wikipedia.org/wiki/Canis_familiaris', 'El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie por derecho propio o una subespecie del lobo), llamado perro doméstico o can, y en algunos lugares coloquialmente llamado chucho, tuso, choco, entre otros; es un mamífero carnívoro de la familia de los cánidos, que constituye una especie del género Canis. En el 2013, la población mundial estimada de perros estaba entre setecientos millones y novecientos ochenta y siete millones. Su tamaño (o talla), su forma y su pelaje es muy diverso y varía según la raza. Posee un oído y un olfato muy desarrollados, y este último es su principal órgano sensorial.', 'https://upload.wikimedia.org/wikipedia/commons/3/38/Anatomy_dog.png', ['linda mi gorda']], 
     ['mono ', 'Mono', 'https://es.wikipedia.org/wiki/Mono', 'La palabra mono es un término informal, no taxonómico, que designa a un amplio conjunto de primates simiiformes. \nLos términos mono y simio son sinónimos en el idioma español, pero en zoología suele hacerse una distinción entre ambos, debido a la influencia del idioma inglés, en el que los términos equivalentes monkey y ape tienen diferentes significados.', 'https://upload.wikimedia.org/wikipedia/commons/8/84/Ateles_fusciceps_Colombia.JPG', ['monkey']], 
@@ -22,12 +23,17 @@ for indice,animal in enumerate(tabla):
     anotaciones.append(animal[5])
     indices.append(indice+1)
 
-dicTabla={'Nombre': nombre, 'Nombre Cientifico': nombreCientifico, 'link Referencia':linkImagen, 
+dicTabla={'Nombre': nombre, 'Nombre Cientifico': nombreCientifico, 'link Referencia':linkReferencia, 
           'descripcion': descripcion, 'link Imagenes':linkImagen, 'anotaciones':anotaciones }
 
 tabla=pd.DataFrame(data=dicTabla, index= indices)
+tabla=str(tabla.to_html(justify="center",render_links=True))
+fecha=datetime.datetime.now()
+formato=fecha.strftime('%d-%m-%Y-%H-%M-%S')
 
-tabla=str(tabla.to_html())
+
+
+
 
         
  

@@ -49,3 +49,16 @@ def leeInfo (nomArchLeer):
         print("El archivo:", nomArchLeer,' aun no contiene nada, Utilice la opcion 2 para crear un Expediente con todos los animales del zoologico.')
         return False
     return lista
+
+def grabaNoBinario(nomArchGrabar,lista):
+    #Función que graba un archivo en una lista 
+    try:
+        f=open(nomArchGrabar,"w")
+        #print("1.Voy a grabar el archivo: ", nomArchGrabar)
+        f.write(lista)
+        #print("1.Voy a cerrar el archivo: ", nomArchGrabar)
+        f.close()
+    except TypeError:
+        print('Error: Se esperaba un dato str y una lista/matriz/tupla/str')
+    except:
+        print('Error inesperado al guardar archivo:'+ nomArchGrabar)
