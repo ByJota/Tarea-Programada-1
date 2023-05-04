@@ -20,13 +20,37 @@ wikipedia.set_lang("es")
 miZoo=Lista de animales
 matriz= Matriz con los expedientes de los animales
 """
-x=0
-while x < 1:
-    nombreZoo=input('Ingrese un nombre para su zoologico:')
-    x=1
-nombre=nombreZoo
-informacion='infoZoo'
 
+# x=0
+# while x < 1:
+#     nombreZoo=input('Ingrese un nombre para su zoologico:')
+#     x=1
+# nombre=nombreZoo
+# informacion='infoZoo'
+
+def recuperarLista(matriz):
+    lista=[]
+    for i in range(len(matriz)):
+        animal= matriz[i][0]
+        print(animal)
+        lista.append(animal)
+        print(lista)
+    return lista
+
+r=int(input('¿Desea cargar un zoológico anterior?\nDigite [1] para Si\nDigite [2] para no\nRespuesta:'))
+if r==1:
+    archivo=input('Ingrese la dirección del archivo anterior: ')
+    matriz=leeInfo(archivo)
+    miZoo=recuperarLista(matriz)
+     
+else:
+    x=0
+    while x < 1:
+        nombreZoo=input('Ingrese un nombre para su zoologico:')
+        x=1
+        nombre=nombreZoo
+        informacion=nombreZoo+'info'
+        
 def validarNumero(numero):
     '''
     Funcion:validar que el numero ingresado sea un entero positivo

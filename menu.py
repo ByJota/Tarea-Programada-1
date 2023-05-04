@@ -6,6 +6,7 @@
 #importacion de librerias
 from os import system
 from funciones import *
+            
 def menu():
     '''
     Funcion: Es un menu que muestra las funciones del sistema de zoológico
@@ -14,7 +15,7 @@ def menu():
     salidas:
     - re direcciona a la funcion indicada por el usuario
     '''
-    while True:
+    while True: 
         try:
             miZoo=lee(nombre)
             matriz=leeInfo(informacion)
