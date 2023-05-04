@@ -214,12 +214,19 @@ def validarApartado(miZoo):
     '''
     while True:
         try:
-            apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
-            if apartar > len(miZoo):
-                print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
-            return apartar
+            if lee(nombre)== False:
+                print('Se le rediccionara a la opcion para crear animales del zoologico.')
+                time.sleep(5.5)
+                system("cls")
+                agregarAnimal()
+            else:   
+                apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
+                if apartar > len(miZoo):
+                    print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
+                return apartar
         except:
             print('Debe indicar un valor numerico de animales para apartar.\n')
+            
 
 def apartarAnimales(miZoo,matriz):
     '''
