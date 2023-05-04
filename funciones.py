@@ -159,17 +159,23 @@ def validarBusqueda(matriz):
     - buscarAnimal(str): devuelve despues de normalizar el str, quitar tildes y caracteres especiales
     '''
     while True:
-        print('Los animales en el zoologico:',lee(nombre))
-        buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
-        if buscarAnimal.isdigit()== True:
-            print('Ingrese el nombre del animal, no se permiten valores numericos.\n')
+        if lee(nombre)== False:
+            print('Se le rediccionara a la opcion para crear animales del zoologico.')
+            time.sleep(5.5)
+            system("cls")
+            agregarAnimal()
         else:
-            buscarAnimal=unidecode(buscarAnimal).lower()
-            for fila in matriz:
-                for animal in fila:
-                    if animal == buscarAnimal:
-                        return buscarAnimal
-            print('El animal a buscar no existe dentro del zoologico.\n')
+            print('Los animales en el zoologico:',lee(nombre)) 
+            buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
+            if buscarAnimal.isdigit()== True:
+                print('Ingrese el nombre del animal, no se permiten valores numericos.\n')
+            else:
+                buscarAnimal=unidecode(buscarAnimal).lower()
+                for fila in matriz:
+                    for animal in fila:
+                        if animal == buscarAnimal:
+                            return buscarAnimal
+                print('El animal a buscar no existe dentro del zoologico.\n')
             
 def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
     '''
@@ -270,7 +276,6 @@ def exportarDB(matriz): #crear XML
     return tree
 
 def crearTablaHTML(matriz):
-
     nombre=[]
     nombreCientifico=[]
     linkReferencia=[]
