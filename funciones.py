@@ -1,6 +1,6 @@
 #Elaborado por Josue Salazar ,Jenny King 
 #Fecha de creacion 29/04/23 1:20pm
-#Ultima modificacion 29/04/23 1:20pm
+#Ultima modificacion 04/05/23 12:07pm
 #version 3.10.6
 #importacion de librerias
 import wikipedia
