@@ -2,7 +2,6 @@
 #Fecha de creacion 29/04/23 1:20pm
 #Ultima modificacion 29/04/23 1:20pm
 #version 3.10.6
-#C:\Users\jenki\OneDrive\Escritorio\texto.txt
 #importacion de librerias
 import os
 from funciones import *
