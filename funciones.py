@@ -20,8 +20,11 @@ wikipedia.set_lang("es")
 miZoo=Lista de animales
 matriz= Matriz con los expedientes de los animales
 """
-
-nombre='zoologico'
+x=0
+while x < 1:
+    nombreZoo=input('Ingrese un nombre para su zoologico:')
+    x=1
+nombre=nombreZoo
 informacion='infoZoo'
 
 def validarNumero(numero):
@@ -40,12 +43,12 @@ def validarNumero(numero):
 
 def agregarAnimal():
     '''
-    Funcion: Genera una lista de animales aleatorios para el zoologico
+    Funcion: Genera una lista de animales aleatorios para el zoológico
     Entradas:
     - path: direccion del archivo txt con los animales
     - numero(int): cantidad de animales aleatorios que va a agregar
     Salidas:
-    - miZoo(list): lista con los animales del zoologico
+    - miZoo(list): lista con los animales del zoológico
     '''
     while True:
         try:
@@ -124,12 +127,13 @@ def crearExpediente(miZoo):
     Entradas:
     -miZoo(list)
     Salidas:
-    - matriz(matrix): contiene los expedientes de todos los animales del zoologico
+    - matriz(matrix): contiene los expedientes de todos los animales del zoológico
     '''
     matriz=[]
     expediente=[]
     while True:
         try:
+            print('Esto puede tardar un poco, porfavor espere...')
             for i in range(len(miZoo)):
                 expediente=[]
                 animal=miZoo[i]
@@ -145,14 +149,14 @@ def crearExpediente(miZoo):
             time.sleep(7.5)
             return matriz
         except TypeError:
-            print('No se a creado un Zoologico aun\nSe le redirigira a la opcion para crear un zoologico')
+            print('No se a creado un zoológico aun\nSe le redirigira a la opción para crear un zoológico')
             time.sleep(5.5)
             system("cls")
             agregarAnimal()
 
 def validarBusqueda(matriz):
     '''
-    Funcion: Validar que el animal a buscar exista en el zoologico
+    Funcion: Validar que el animal a buscar exista en el zoológico
     Entradas:
     - matriz(matrix)
     Salidas:
@@ -160,26 +164,26 @@ def validarBusqueda(matriz):
     '''
     while True:
         if lee(nombre)== False:
-            print('Se le rediccionara a la opcion para crear animales del zoologico.')
+            print('Se le rediccionara a la opción para crear animales del zoológico.')
             time.sleep(5.5)
             system("cls")
             agregarAnimal()
         else:
-            print('Los animales en el zoologico:',lee(nombre)) 
+            print('Los animales en el zoológico:',lee(nombre)) 
             buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
             if buscarAnimal.isdigit()== True:
-                print('Ingrese el nombre del animal, no se permiten valores numericos.\n')
+                print('Ingrese el nombre del animal, no se permiten valores numéricos.\n')
             else:
                 buscarAnimal=unidecode(buscarAnimal).lower()
                 for fila in matriz:
                     for animal in fila:
                         if animal == buscarAnimal:
                             return buscarAnimal
-                print('El animal a buscar no existe dentro del zoologico.\n')
+                print('El animal a buscar no existe dentro del zoológico.\n')
             
 def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada lista en la matriz
     '''
-    Funcion: Registrar anotaciones para cada animal en el zoologico
+    Funcion: Registrar anotaciones para cada animal en el zoológico
     Entradas:
     - matriz(matrix)
     Salidas:
@@ -193,12 +197,12 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
             expediente= matriz[i]
             animal=expediente[0]
             if buscarAnimal == animal:
-                anotacion=input('Anotacion: ')
+                anotacion=input('Anotación: ')
                 expediente[5].append(anotacion)
                 graba(informacion,matriz)
-                print('Anotacion guardada!\n')
+                print('¡Anotación guardada!\n')
         
-        respuesta=int(input("Quiere realizar una anotacion?: Digite [1] para Si Digite [2] para no Respuesta:")) 
+        respuesta=int(input("Quiere realizar una anotación?:\nDigite [1] para Si\nDigite [2] para no\nRespuesta:")) 
         system("cls")
     print(matriz)
     time.sleep(20)      
@@ -215,22 +219,21 @@ def validarApartado(miZoo):
     while True:
         try:
             if lee(nombre)== False:
-                print('Se le rediccionara a la opcion para crear animales del zoologico.')
+                print('Se le rediccionara a la opción para crear animales del zoológico.')
                 time.sleep(5.5)
                 system("cls")
                 agregarAnimal()
             else:   
-                apartar=int(input('Digite el numero de animales que desea apartar del Zoologico: '))
+                apartar=int(input('Digite el numero de animales que desea apartar del zoológico: '))
                 if apartar > len(miZoo):
-                    print('El numero de animales por apartar es mayor al numero de animales en el Zoologico')
+                    print('El numero de animales por apartar es mayor al numero de animales en el zoológico')
                 return apartar
         except:
-            print('Debe indicar un valor numerico de animales para apartar.\n')
+            print('Debe indicar un valor numérico de animales para apartar.\n')
             
-
 def apartarAnimales(miZoo,matriz):
     '''
-    Funcion: aparta animales del zoologico
+    Funcion: aparta animales del zoológico
     Entradas:
     - miZoo(list)
     - matriz(matrix)
@@ -239,7 +242,7 @@ def apartarAnimales(miZoo,matriz):
     '''
     apartar=validarApartado(miZoo)
     i=0
-    confirmacion=int(input(f'¿Está seguro que quiere apartar {apartar} animales de su Zoologico?\n'+
+    confirmacion=int(input(f'¿Está seguro que quiere apartar {apartar} animales de su zoológico?\n'+
                            'Digite [1] para SI\nDigite [2] para NO\nRespuesta:'))
     if confirmacion == 1:
         while i < apartar:
@@ -248,10 +251,12 @@ def apartarAnimales(miZoo,matriz):
             nombreAnimal=matriz[apartado-1][0]
             matriz.remove(matriz[apartado-1])
             graba(informacion,matriz)
+            print('')
             print('El animal:',nombreAnimal,'se ha apartado exitosamente.')
             print(matriz)
             i+=1
         time.sleep(20)
+        system("cls")
         return matriz
     print('Apartado abortado. No se aparto ningun animal. Volviendo al menu')
     time.sleep(3)

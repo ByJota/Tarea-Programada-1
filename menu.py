@@ -8,7 +8,7 @@ from os import system
 from funciones import *
 def menu():
     '''
-    Funcion: Es un menu que muestra las funciones del sistema de zoologico
+    Funcion: Es un menu que muestra las funciones del sistema de zoológico
     entradas:
     -
     salidas:
@@ -18,7 +18,7 @@ def menu():
         try:
             miZoo=lee(nombre)
             matriz=leeInfo(informacion)
-            print("Programa Zoologico".center(100,"="))
+            print("Programa zoológico".center(100,"="))
             print("Menu de opciones:\n"+
                     "-1.Agregar animal\n"+
                     "-2.Crear Expediente\n"+
@@ -26,8 +26,8 @@ def menu():
                     "-4.Apartar animales de mi zoológico\n"+
                     "-5.Exportar la base de datos\n"+
                     "-6.Mostrar base de datos del zoológico\n"+
-                    "-7.Salir del menu\n") 
-            opcion=int(input("Opcion:"))
+                    "-7.Salir del Programa\n") 
+            opcion=int(input("Opción :"))
             if opcion==1:
                 agregarAnimal()
                 system("cls")
@@ -53,14 +53,15 @@ def menu():
                     "2.No")
                 respuesta=int(input("R/"))
                 if respuesta==1:
-                    system("exit")
+                    print('Gracias por usar el sistema.')
+                    raise SystemExit
                 else:
                     system("cls")
                     menu()
             else:
-                print("Opcion fuera del rango. Digite una entre 1 y 7. ")
+                print("Opción fuera del rango. Digite una entre 1 y 7. ")
         except ValueError:
-            print("Debe digitar una opcion del 1 al 7.")
+            print("Debe digitar una opción del 1 al 7.")
             time.sleep(2)
             system("cls")
         except IndexError:
