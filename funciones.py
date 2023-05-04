@@ -29,27 +29,39 @@ matriz= Matriz con los expedientes de los animales
 # informacion='infoZoo'
 
 def recuperarLista(matriz):
+    '''
+    Funcion: Recupera una lista simple con los nombres de los animales de la matriz
+    Entradas:
+    -matriz(matrix)
+    Salidas:
+    - lista(list)
+    '''
     lista=[]
     for i in range(len(matriz)):
         animal= matriz[i][0]
-        print(animal)
+        #print(animal)
         lista.append(animal)
-        print(lista)
+        #print(lista)
     return lista
 
 r=int(input('¿Desea cargar un zoológico anterior?\nDigite [1] para Si\nDigite [2] para no\nRespuesta:'))
 if r==1:
     archivo=input('Ingrese la dirección del archivo anterior: ')
     matriz=leeInfo(archivo)
+    nombre=input('Ingrese un nombre para guardar los animales de este zoológico:')
     miZoo=recuperarLista(matriz)
-     
+    informacion=nombre+'info'
+    graba(nombre,miZoo)
+    pass
 else:
     x=0
     while x < 1:
-        nombreZoo=input('Ingrese un nombre para su zoologico:')
+        nombreZoo=input('Ingrese un nombre para su zoológico:')
         x=1
         nombre=nombreZoo
         informacion=nombreZoo+'info'
+        miZoo=lee(nombre)
+        matriz=leeInfo(informacion)
         
 def validarNumero(numero):
     '''
