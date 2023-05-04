@@ -20,6 +20,7 @@ def graba(nomArchGrabar,lista):
 
 def lee (nomArchLeer):
     #Función que lee un archivo en una lista 
+    #Lee una lista simple con los nombre de animales 
     lista=[]
     try:
         f=open(nomArchLeer,"rb")
@@ -36,6 +37,7 @@ def lee (nomArchLeer):
 
 def leeInfo (nomArchLeer):
     #Función que lee un archivo en una lista 
+    #Lee la matriz con todos los expedientes
     lista=[]
     try:
         f=open(nomArchLeer,"rb")
@@ -51,7 +53,7 @@ def leeInfo (nomArchLeer):
     return lista
 
 def grabaNoBinario(nomArchGrabar,lista):
-    #Función que graba un archivo en una lista 
+    #Función que graba un archivo no binario en una lista 
     try:
         f=open(nomArchGrabar,"w")
         #print("1.Voy a grabar el archivo: ", nomArchGrabar)
