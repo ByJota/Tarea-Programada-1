@@ -21,13 +21,6 @@ miZoo=Lista de animales
 matriz= Matriz con los expedientes de los animales
 """
 
-# x=0
-# while x < 1:
-#     nombreZoo=input('Ingrese un nombre para su zoologico:')
-#     x=1
-# nombre=nombreZoo
-# informacion='infoZoo'
-
 def recuperarLista(matriz):
     '''
     Funcion: Recupera una lista simple con los nombres de los animales de la matriz
@@ -54,14 +47,13 @@ if r==1:
     graba(nombre,miZoo)
     pass
 else:
+    system("cls")
     x=0
     while x < 1:
         nombreZoo=input('Ingrese un nombre para su zoológico:')
         x=1
         nombre=nombreZoo
         informacion=nombreZoo+'info'
-        miZoo=lee(nombre)
-        matriz=leeInfo(informacion)
         
 def validarNumero(numero):
     '''
@@ -349,6 +341,3 @@ def crearTablaHTML(matriz):
     formato=fecha.strftime('%d-%m-%Y-%H-%M-%S')+".html"
     grabaNoBinario(formato,tabla)
     
-
-
-

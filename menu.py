@@ -17,6 +17,8 @@ def menu():
     '''
     while True: 
         try:
+            miZoo=lee(nombre)
+            matriz=leeInfo(informacion)
             print("Programa zoológico".center(100,"="))
             print("Menu de opciones:\n"+
                     "-1.Agregar animal\n"+
@@ -45,7 +47,6 @@ def menu():
             elif opcion==6:
                 system("cls")
                 crearTablaHTML(matriz)
-                #mostrar base de datos
             elif opcion==7:
                 print("¿Seguro que quiere salir del Programa?\n"+
                     "1.Si\n"+
