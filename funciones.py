@@ -33,9 +33,7 @@ def recuperarLista(matriz):
     lista=[]
     for i in range(len(matriz)):
         animal= matriz[i][0]
-        #print(animal)
         lista.append(animal)
-        #print(lista)
     return lista
 
 r=int(input('¿Desea cargar un zoológico anterior?\nDigite [1] para Si\nDigite [2] para no\nRespuesta:'))
@@ -45,6 +43,7 @@ if r==1:
     nombre=input('Ingrese un nombre para guardar los animales de este zoológico:')
     miZoo=recuperarLista(matriz)
     informacion=nombre+'info'
+    graba(informacion,matriz)
     graba(nombre,miZoo)
     pass
 else:
@@ -208,10 +207,11 @@ def validarBusqueda(matriz):
         else:
             print('Los animales en el zoológico:',lee(nombre)) 
             buscarAnimal=input('Ingrese el nombre del animal a buscar: ')
+            print('')
             if buscarAnimal.isdigit()== True:
                 print('Ingrese el nombre del animal, no se permiten valores numéricos.\n')
             else:
-                buscarAnimal=unidecode(buscarAnimal).lower()
+                buscarAnimal=unidecode(buscarAnimal)#.lower()
                 for fila in matriz:
                     for animal in fila:
                         if animal == buscarAnimal:
@@ -228,7 +228,8 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     '''
     print("Registrar Anotaciones".center(70,"=")+"\n")
     respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
-    print('')
+    print('Nota al usuario: Para que evitar cualquie tipo de dificultad, copie el nombre del animal al cual le vaya a realizar una anotacion.'
+          '\nEl sistema es sensible a las mayúsculas.')
     while respuesta == 1:
         buscarAnimal=validarBusqueda(matriz)
         for i in range(len(matriz)): #busca al animal en la matriz
