@@ -20,6 +20,7 @@ def graba(nomArchGrabar,lista):
 
 def lee (nomArchLeer):
     #Función que lee un archivo en una lista 
+    #Lee una lista simple con los nombre de animales 
     lista=[]
     try:
         f=open(nomArchLeer,"rb")
@@ -36,6 +37,7 @@ def lee (nomArchLeer):
 
 def leeInfo (nomArchLeer):
     #Función que lee un archivo en una lista 
+    #Lee la matriz con todos los expedientes
     lista=[]
     try:
         f=open(nomArchLeer,"rb")
@@ -49,3 +51,16 @@ def leeInfo (nomArchLeer):
         print("El archivo:", nomArchLeer,' aun no contiene nada, Utilice la opcion 2 para crear un Expediente con todos los animales del zoologico.')
         return False
     return lista
+
+def grabaNoBinario(nomArchGrabar,lista):
+    #Función que graba un archivo no binario en una lista 
+    try:
+        f=open(nomArchGrabar,"w")
+        #print("1.Voy a grabar el archivo: ", nomArchGrabar)
+        f.write(lista)
+        #print("1.Voy a cerrar el archivo: ", nomArchGrabar)
+        f.close()
+    except TypeError:
+        print('Error: Se esperaba un dato str y una lista/matriz/tupla/str')
+    except:
+        print('Error inesperado al guardar archivo:'+ nomArchGrabar)

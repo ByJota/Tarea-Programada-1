@@ -4,68 +4,100 @@
 #version 3.10.6
 #C:\Users\jenki\OneDrive\Escritorio\texto.txt
 #importacion de librerias
-from os import system
+import os
 from funciones import *
+            
 def menu():
     '''
-    Funcion: Es un menu que muestra las funciones del sistema de zoologico
+    Funcion: Es un menu que muestra las funciones del sistema de zoológico
     entradas:
     -
     salidas:
     - re direcciona a la funcion indicada por el usuario
     '''
-    while True:
+    while True: 
         try:
             miZoo=lee(nombre)
             matriz=leeInfo(informacion)
-            print("Programa Zoologico".center(100,"="))
-            print("Menu de opciones:\n"+
-                    "-1.Agregar animal\n"+
-                    "-2.Crear Expediente\n"+
-                    "-3.Registrar Anotaciones\n"+
-                    "-4.Apartar animales de mi zoológico\n"+
-                    "-5.Exportar la base de datos\n"+
-                    "-6.Mostrar base de datos del zoológico\n"+
-                    "-7.Salir del menu\n") 
-            opcion=int(input("Opcion:"))
+            print("Programa zoológico".center(100,"="))
+            print(
+      "           |-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-|\n"+
+      "           |          ZOOLOGICO            |\n"+
+      "           |-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-|\n"+
+      "------------------------------------------------------------------- \n"+
+      "|  Opciones del menu:                      |                      |\n"+
+      "|                                          |                      |\n"
+      "|  1.Agregar animales                      |     *-*-*-*-*-*-*    |\n"+
+      "|  2.Crear Expedientes                     |     '  ABIERTO  '    |\n"+
+      "|  3.Registrar Anotaciones                 |     *-*-*-*-*-*-*    |\n"+
+      "|  4.Apartar animales de mi zoológico      |                      |\n"+
+      "|  5.Exportar la base de datos             |                      |\n"+
+      "|  6.Mostrar base de datos del zoológico   |      **********      |\n"+
+      "|  7.Salir del programa                    |     *          *     |\n"+
+      "|                                          |     *          *     |\n"+
+      "| ---------------------------------------- |     *          *     |\n"+
+      "|         |          |          |          |     *          *     |\n"+
+      "-------------------------------------------------------------------\n"+
+      "")
+            opcion=int(input("Opción :"))
             if opcion==1:
+                print("Cargando...")
+                time.sleep(3)
+                os.system("cls")
                 agregarAnimal()
-                system("cls")
+                os.system("cls")
             elif opcion==2:
+                os.system("cls")
                 crearExpediente(miZoo)
-                system("cls")
+                os.system("cls")
             elif opcion==3:
+                print("Cargando...")
+                time.sleep(3)
+                os.system("cls")
                 registrarAnotaciones(matriz)
-                system("cls")
+                os.system("cls")
             elif opcion==4:
-                system("cls")
+                print("Cargando...")
+                time.sleep(3)
+                os.system("cls")
                 apartarAnimales(miZoo,matriz)
+                os.system("cls")
             elif opcion==5:
-                system("cls")
+                print("Cargando...")
+                time.sleep(3)
+                os.system("cls")
                 exportarDB(matriz)
+                os.system("cls")
             elif opcion==6:
-                system("cls")
-                #mostrar base de datos
+                print("Cargando...")
+                time.sleep(3)
+                os.system("cls")
+                crearTablaHTML(matriz)
+                input("Presione Enter para continuar:")
             elif opcion==7:
                 print("¿Seguro que quiere salir del Programa?\n"+
                     "1.Si\n"+
                     "2.No")
                 respuesta=int(input("R/"))
                 if respuesta==1:
-                    system("exit")
+                    os.system("cls")
+                    print('Gracias por usar el sistema.')
+                    raise SystemExit
                 else:
-                    system("cls")
+                    os.system("cls")
                     menu()
             else:
-                print("Opcion fuera del rango. Digite una entre 1 y 7. ")
+                print("Opción fuera del rango. Digite una entre 1 y 7. ")
+                time.sleep(5)
+                os.system("cls")
         except ValueError:
-            print("Debe digitar una opcion del 1 al 7.")
-            time.sleep(2)
-            system("cls")
+            print("Debe digitar una opción del 1 al 7.")
+            time.sleep(5)
+            os.system("cls")
         except IndexError:
             print("El dato ingresado esta fuera de alcanze.")
-            time.sleep(2)
-            system("cls")
+            time.sleep(5)
+            os.system("cls")
 #Programa Principal 
 menu()
 
