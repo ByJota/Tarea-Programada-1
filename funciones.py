@@ -228,8 +228,8 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     '''
     print("Registrar Anotaciones".center(70,"=")+"\n")
     respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
-    print('Nota al usuario: Para que evitar cualquie tipo de dificultad, copie el nombre del animal al cual le vaya a realizar una anotacion.'
-          '\nEl sistema es sensible a las mayúsculas.')
+    print('\nNota al usuario: Para que evitar cualquier tipo de dificultad, copie el nombre del animal al cual le vaya a realizar una anotación.'
+          '\nEl sistema es sensible a las mayúsculas.\n')
     while respuesta == 1:
         buscarAnimal=validarBusqueda(matriz)
         for i in range(len(matriz)): #busca al animal en la matriz
@@ -244,7 +244,7 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
         respuesta=int(input("Quiere realizar una anotación?:\nDigite [1] para Si\nDigite [2] para no\nRespuesta:")) 
         os.system("cls")
     for fila in matriz:
-        print(fila)
+        print(fila,'\n')
     input("Presione Enter para continuar:")     
     return matriz
 
@@ -295,8 +295,6 @@ def apartarAnimales(miZoo,matriz):
             print('El animal:',nombreAnimal,'se ha apartado exitosamente.')
             print(matriz)
             i+=1
-        for fila in matriz:
-            print(fila)
         input("\nPresione Enter para continuar:")
         return matriz
     print('Apartado abortado. No se aparto ningun animal. Volviendo al menu')
