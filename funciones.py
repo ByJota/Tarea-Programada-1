@@ -228,7 +228,7 @@ def registrarAnotaciones(matriz): #anotaciones estan en la posicion 5 de cada li
     '''
     print("Registrar Anotaciones".center(70,"=")+"\n")
     respuesta=int(input("Quiere realizar una anotacion?:\nDigite [1] para Si \nDigite [2] para no \nRespuesta:"))
-    print('\nNota al usuario: Para que evitar cualquier tipo de dificultad, copie el nombre del animal al cual le vaya a realizar una anotación.'
+    print('Nota al usuario: Para que evitar cualquier tipo de dificultad, copie el nombre del animal al cual le vaya a realizar una anotación.'
           '\nEl sistema es sensible a las mayúsculas.\n')
     while respuesta == 1:
         buscarAnimal=validarBusqueda(matriz)
